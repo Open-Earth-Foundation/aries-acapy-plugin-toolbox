@@ -340,8 +340,8 @@ async def admin_connections(session: ProfileSession):
         )
     )
     admins = [
-        await ConnRecord.retrieve_by_id(session, id)
-        for id in admin_ids
+        await ConnRecord.retrieve_by_id(session, connection_id)
+        for connection_id in admin_ids
     ]
     LOGGER.info("Discovered admins: %s", admins)
     return admins
@@ -359,20 +359,28 @@ async def send_to_admins(
     admins = list(filter(lambda admin: admin.state == 'active', admins))
     connection_mgr = ConnectionManager(session)
     admin_targets = [
-        target
+        (admin, target)
         for admin in admins
         for target in await connection_mgr.get_connection_targets(
             connection=admin
         )
     ]
 
-    for target in admin_targets:
-        await responder.send(
-            message,
-            reply_to_verkey=target.recipient_keys[0],
-            reply_from_verkey=target.sender_key,
-            to_session_only=to_session_only
-        )
+    for conn, target in admin_targets:
+        if not to_session_only:
+            await responder.send(
+                message,
+                reply_to_verkey=target.recipient_keys[0],
+                reply_from_verkey=target.sender_key,
+                connection_id=conn.connection_id,
+            )
+        else:
+            await responder.send(
+                message,
+                reply_to_verkey=target.recipient_keys[0],
+                reply_from_verkey=target.sender_key,
+                to_session_only=to_session_only,
+            )
 
 
 class InvalidConnection(Exception):
