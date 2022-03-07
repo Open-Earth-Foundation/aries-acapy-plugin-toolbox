@@ -1,0 +1,24 @@
+version: "3"
+services:
+  tunnel-inidico-trainer:
+    image: dbluhm/agent-tunnel
+    command: "-s agent-indicio-trainer:3008 -p 4040 --host ${AGENT_TUNNEL_HOST}"
+
+  agent-indicio-trainer:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./demo/acapy-endpoint.sh:/acapy-endpoint.sh:ro,z
+      - ./demo/configs:/home/indy/configs:ro,z
+    environment:
+      TUNNEL_ENDPOINT: http://tunnel-inidico-trainer:4040
+    ports:
+     - "3008:3008"
+     - "8154:8154"
+    entrypoint: >
+      /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
+    command: >
+      start --arg-file default.yml -it acapy_plugin_toolbox.http_ws 0.0.0.0 3008 --admin 0.0.0.0 8154
+      --label "Indicio Trainer"
+      --invite-label "Indicio Trainer (admin)"

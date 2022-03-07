@@ -1,0 +1,69 @@
+version: "3"
+services:
+  tunnel-sophia:
+    image: dbluhm/agent-tunnel
+    command: "-s agent-sophia:3005 -p 4040 --host ${AGENT_TUNNEL_HOST}"
+  agent-sophia:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./demo/acapy-endpoint.sh:/acapy-endpoint.sh:ro,z
+      - ./demo/configs:/home/indy/configs:ro,z
+    environment:
+      TUNNEL_ENDPOINT: http://tunnel-sophia:4040
+    ports:
+     - "3005:3005"
+     - "8150:8150"
+    entrypoint: >
+      /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
+    command: >
+      start --arg-file configs/default.yml -it acapy_plugin_toolbox.http_ws 0.0.0.0 3005 --admin 0.0.0.0 8150
+      --label Sophia
+      --invite-label "Sophia (admin)"
+      --log-level debug
+
+
+  tunnel-dmv:
+    image: dbluhm/agent-tunnel
+    command: "-s agent-dmv:3006 -p 4040 --host ${AGENT_TUNNEL_HOST}"
+  agent-dmv:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./demo/acapy-endpoint.sh:/acapy-endpoint.sh:ro,z
+      - ./demo/configs:/home/indy/configs:ro,z
+    environment:
+      TUNNEL_ENDPOINT: http://tunnel-dmv:4040
+    ports:
+     - "3006:3006"
+     - "8151:8151"
+    entrypoint: >
+      /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
+    command: >
+      start --arg-file configs/default.yml -it acapy_plugin_toolbox.http_ws 0.0.0.0 3006 --admin 0.0.0.0 8151
+      --label DMV
+      --invite-label "DMV (admin)"
+
+  tunnel-bank:
+    image: dbluhm/agent-tunnel
+    command: "-s agent-bank:3007 -p 4040 --host ${AGENT_TUNNEL_HOST}"
+  agent-bank:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./demo/acapy-endpoint.sh:/acapy-endpoint.sh:ro,z
+      - ./demo/configs:/home/indy/configs:ro,z
+    environment:
+      TUNNEL_ENDPOINT: http://tunnel-bank:4040
+    ports:
+     - "3007:3007"
+     - "8152:8152"
+    entrypoint: >
+      /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
+    command: >
+      start --arg-file configs/default.yml -it acapy_plugin_toolbox.http_ws 0.0.0.0 3007 --admin 0.0.0.0 8152
+      --label Bank
+      --invite-label "Bank (admin)"
