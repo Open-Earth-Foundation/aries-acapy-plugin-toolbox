@@ -21,7 +21,6 @@ services:
       start --arg-file configs/default.yml -it acapy_plugin_toolbox.http_ws 0.0.0.0 3005 --admin 0.0.0.0 8150
       --label Sophia
       --invite-label "Sophia (admin)"
-      --log-level debug
 
 
   tunnel-dmv:
