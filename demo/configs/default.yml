@@ -17,8 +17,7 @@ endpoint:
   - ws://localhost:3000
 
 # Ledger
-# Use Sovrin Builder Net. Become an endorser at https://selfserve.sovrin.org.
-genesis-url: https://raw.githubusercontent.com/sovrin-foundation/sovrin/master/sovrin/pool_transactions_builder_genesis
+genesis-url: https://raw.githubusercontent.com/Indicio-tech/indicio-network/master/genesis_files/pool_transactions_testnet_genesis
 
 # Connections
 debug-connections: true

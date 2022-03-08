@@ -19,6 +19,7 @@ services:
     entrypoint: >
       /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
     command: >
-      start --arg-file default.yml -it acapy_plugin_toolbox.http_ws 0.0.0.0 3008 --admin 0.0.0.0 8154
+      start --arg-file configs/default.yml -it acapy_plugin_toolbox.http_ws 0.0.0.0 3008 --admin 0.0.0.0 8154
       --label "Indicio Trainer"
       --invite-label "Indicio Trainer (admin)"
+      --wallet-name trainer
