@@ -1,18 +1,12 @@
-version: "3"
+version: "3.9"
 services:
-  tunnel:
-    image: reflectivedevelopment/agent-tunnel
-    command: agent:3000 -p 4040
-    ports:
-      - 4040:4040
-  agent:
+  agent-hub:
     build: .
-    image: acapy-toolbox-tunnel
-    build:
-      context: ../
-      dockerfile: ./demo/Dockerfile.demo
     environment:
-      TUNNEL_HOST: tunnel
-      TUNNEL_PORT: 4040
+      - AGENT_NAME=${AGENT_NAME}
+      - PORT=${PORT}
+      - ADMIN_PORT=${ADMIN_PORT}
+      - WEBHOOK_ADDRESS=${WEBHOOK_ADDRESS}
     ports:
-      - "3001:3001"
+     - "3005:3005"
+     - "8150:8150"

@@ -10,7 +10,9 @@ ADD https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 ./jq
 RUN chmod +x ./jq
 COPY startup.sh startup.sh
 RUN chmod +x ./startup.sh
+COPY agent-tunnel-wait.sh wait.sh
+RUN chmod +x ./wait.sh
 
-EXPOSE 3005
-EXPOSE 8150
-ENTRYPOINT ["./startup.sh"]
+USER $user
+
+CMD ./wait.sh ./startup.sh
