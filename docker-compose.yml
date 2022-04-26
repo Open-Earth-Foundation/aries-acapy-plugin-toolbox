@@ -7,6 +7,8 @@ services:
       - PORT=${PORT}
       - ADMIN_PORT=${ADMIN_PORT}
       - WEBHOOK_ADDRESS=${WEBHOOK_ADDRESS}
+    extra_hosts:
+      - host.docker.internal:host-gateway
     ports:
      - "3005:3005"
      - "8150:8150"
