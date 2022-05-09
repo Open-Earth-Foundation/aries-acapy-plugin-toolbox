@@ -20,4 +20,5 @@ aca-py start \
     --debug-presentations \
     --enable-undelivered-queue \
     --log-level debug \
+    --public-invites \
     "$@"
