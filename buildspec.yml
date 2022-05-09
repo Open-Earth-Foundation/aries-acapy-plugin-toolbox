@@ -16,7 +16,7 @@ phases:
       - echo $INPUT_ENV
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t openfinance_ci .
+      - docker build -t acapy .
       - echo "Version--> " `cat version.txt`
       - VERSION=`cat version.txt`
       - docker tag acapy 572872725253.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/acapy:$VERSION
