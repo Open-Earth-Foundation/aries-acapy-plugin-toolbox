@@ -19,18 +19,18 @@ phases:
       - docker build -t acapy .
       - echo "Version--> " `cat version.txt`
       - VERSION=`cat version.txt`
-      - docker tag acapy 572872725253.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/acapy:$VERSION
+      - docker tag acapy 572872725253.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$INPUT_ENV-acapy:$VERSION
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 572872725253.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/acapy:$VERSION
+      - docker push 572872725253.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$INPUT_ENV-acapy:$VERSION
       - sed -i 's/<VERSION>/'$VERSION'/g' taskdef.json
       - sed -i 's/<ENV>/'$INPUT_ENV'/g' taskdef.json
       - sed -i 's/<REGION>/'$AWS_DEFAULT_REGION'/g' taskdef.json
       - echo Writing image definitions file...
       - SERVICE_NAME=$INPUT_ENV"-acapy"
-      - printf '[{"name":"%s","imageUri":"%s"}]' $SERVICE_NAME 572872725253.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/acapy:$VERSION > imagedefinitions.json
+      - printf '[{"name":"%s","imageUri":"%s"}]' $SERVICE_NAME 572872725253.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$INPUT_ENV-acapy:$VERSION > imagedefinitions.json
 
 artifacts:
   files:
