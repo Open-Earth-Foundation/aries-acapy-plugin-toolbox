@@ -1,0 +1,49 @@
+{
+  "family": "openfinance",
+
+  "containerDefinitions": [
+{
+  "name" : "openfinance",
+  "image" : "572872725253.dkr.ecr.<REGION>.amazonaws.com/acapy:<VERSION>",
+  "cpu" : 0,
+  "memory" : 300,
+  "essential" : true,
+  "portMappings" : [
+    {
+      "containerPort" : 3005,
+      "hostPort" : 3005
+    }
+  ],
+  "logConfiguration" : {
+    "logDriver" : "awslogs",
+    "options" : {
+      "awslogs-group" : "/ecs/dev-acapy",
+      "awslogs-region" : "<REGION>",
+      "awslogs-stream-prefix" : "ecs"
+    }
+  },
+  "environment": [
+  {
+    "name": "AGENT_NAME",
+    "value": ""
+  },
+  {
+    "name": "PORT",
+    "value": ""
+  },
+  {
+    "name": "ADMIN_PORT",
+    "value": ""
+  },
+  {
+    "name": "WEBHOOK_ADDRESS",
+    "value": ""
+  },
+  {
+    "name": "ACAPY_ENDPOINT",
+    "value": ""
+  }
+]
+}
+]
+}
