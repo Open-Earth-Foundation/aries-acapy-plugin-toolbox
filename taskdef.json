@@ -1,10 +1,9 @@
 {
-  "family": "openfinance",
-
+  "family": "<ENV>-acapy",
   "containerDefinitions": [
 {
-  "name" : "openfinance",
-  "image" : "572872725253.dkr.ecr.<REGION>.amazonaws.com/acapy:<VERSION>",
+  "name" : "<ENV>-acapy",
+  "image" : "572872725253.dkr.ecr.<REGION>.amazonaws.com/dev-acapy:<VERSION>",
   "cpu" : 0,
   "memory" : 300,
   "essential" : true,
@@ -12,6 +11,10 @@
     {
       "containerPort" : 3005,
       "hostPort" : 3005
+    },
+    {
+      "containerPort" : 8005,
+      "hostPort" : 8005
     }
   ],
   "logConfiguration" : {
@@ -25,23 +28,23 @@
   "environment": [
   {
     "name": "AGENT_NAME",
-    "value": ""
+    "value": "hub"
   },
   {
     "name": "PORT",
-    "value": ""
+    "value": "3005"
   },
   {
     "name": "ADMIN_PORT",
-    "value": ""
+    "value": "8150"
   },
   {
     "name": "WEBHOOK_ADDRESS",
-    "value": ""
+    "value": "http://controller.openclimate.local/api/controller-webhook"
   },
   {
     "name": "ACAPY_ENDPOINT",
-    "value": ""
+    "value": "https://acapy-dev.openclimate.network"
   }
 ]
 }
