@@ -13,8 +13,8 @@
       "hostPort" : 3005
     },
     {
-      "containerPort" : 8005,
-      "hostPort" : 8005
+      "containerPort" : 8150,
+      "hostPort" : 8150
     }
   ],
   "logConfiguration" : {
