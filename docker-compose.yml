@@ -13,6 +13,8 @@ services:
     ports:
      - "3005:3005"
      - "8150:8150"
+    expose:
+     - 3005
     deploy:
       resources:
           limits:
