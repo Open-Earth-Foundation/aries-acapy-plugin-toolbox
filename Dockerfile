@@ -1,5 +1,5 @@
 #FROM bcgovimages/von-image:py36-1.14-0
-FROM 572872725253.dkr.ecr.us-east-1.amazonaws.com/von-image:py36-1.14-0
+FROM <ACCOUNTID>.dkr.ecr.<REGION>.amazonaws.com/von-image:py36-1.14-0
 USER root
 
 ADD . .

@@ -1,9 +1,9 @@
 {
-  "family": "<ENV>-acapy",
+  "family": "acapy",
   "containerDefinitions": [
 {
-  "name" : "<ENV>-acapy",
-  "image" : "572872725253.dkr.ecr.<REGION>.amazonaws.com/dev-acapy:<VERSION>",
+  "name" : "acapy",
+  "image" : "<ACCOUNTID>.dkr.ecr.<REGION>.amazonaws.com/acapy:<VERSION>",
   "cpu" : 0,
   "memory" : 300,
   "essential" : true,
@@ -20,7 +20,7 @@
   "logConfiguration" : {
     "logDriver" : "awslogs",
     "options" : {
-      "awslogs-group" : "/ecs/dev-acapy",
+      "awslogs-group" : "/ecs/acapy",
       "awslogs-region" : "<REGION>",
       "awslogs-stream-prefix" : "ecs"
     }
@@ -44,7 +44,7 @@
   },
   {
     "name": "ACAPY_ENDPOINT",
-    "value": "https://acapy-dev.openclimate.network"
+    "value": "<ACAPY_ENDPOINT>"
   }
 ]
 }

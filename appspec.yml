@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
-          ContainerName: "<ENV>-acapy"
+          ContainerName: "acapy"
           ContainerPort: 3005
