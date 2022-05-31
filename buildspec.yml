@@ -30,7 +30,7 @@ phases:
       - sed -i 's/<REGION>/'$AWS_DEFAULT_REGION'/g' taskdef.json
       - sed -i 's/<ACCOUNTID>/'$ACCOUNTID'/g' taskdef.json
       - sed -i 's/<ACAPY_ENDPOINT>/'$ACAPY_ENDPOINT'/g' taskdef.json
-
+      - sed -i 's/<UI_ENDPOINT>/'$UI_ENDPOINT'/g' taskdef.json
 
 artifacts:
   files:
