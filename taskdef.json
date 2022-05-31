@@ -40,7 +40,7 @@
   },
   {
     "name": "WEBHOOK_ADDRESS",
-    "value": "http://controller.openclimate.local/api/controller-webhook"
+    "value": "http://controller.openclimate.local:3100/api/controller-webhook"
   },
   {
     "name": "ACAPY_ENDPOINT",
