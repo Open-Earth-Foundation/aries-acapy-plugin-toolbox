@@ -94,7 +94,7 @@ $ pip install -e .[indy]
 
 Install this plugin into the virtual environment:
 ```sh
-$ pip install git+https://github.com/hyperledger/aries-acapy-plugin-toolbox.git@master#egg=acapy-plugin-toolbox
+$ pip install git+https://github.com/hyperledger/aries-acapy-plugin-toolbox.git@main#egg=acapy-plugin-toolbox
 ```
 
 ### Plugin Loading
