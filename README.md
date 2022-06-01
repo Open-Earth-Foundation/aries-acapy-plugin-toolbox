@@ -13,6 +13,7 @@ Net for Verifiable Credentials exchange.
 Requirements:
 - Docker
 - Docker Compose
+- GCP credentials
 
 ### Disclaimer regarding the use of ngrok
 Both compose setups use the ngrok tunneling service to make your agent available
