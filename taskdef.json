@@ -40,11 +40,11 @@
   },
   {
     "name": "WEBHOOK_ADDRESS",
-    "value": "<WEBHOOK_ADDRESS>"
+    "value": "https://<WEBHOOK_ADDRESS>"
   },
   {
     "name": "ACAPY_ENDPOINT",
-    "value": "<ACAPY_ENDPOINT>"
+    "value": "https://<ACAPY_ENDPOINT>"
   }
 ]
 }
