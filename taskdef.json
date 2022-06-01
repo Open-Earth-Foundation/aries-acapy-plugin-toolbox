@@ -40,7 +40,7 @@
   },
   {
     "name": "WEBHOOK_ADDRESS",
-    "value": "https://<UI_ENDPOINT>/api/controller-webhook"
+    "value": "<WEBHOOK_ADDRESS>"
   },
   {
     "name": "ACAPY_ENDPOINT",
