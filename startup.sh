@@ -10,6 +10,11 @@ aca-py start \
     --invite --invite-role admin --invite-label "$AGENT_NAME (admin)" \
     --genesis-url http://test.bcovrin.vonx.io/genesis \
     --wallet-type indy \
+    --wallet-name 'wallet_db' \
+    --wallet-key 'development' \
+    --wallet-storage-type 'postgres_storage' \
+    --wallet-storage-config '{"url":"acapy.chr8em0ftndd.us-east-1.rds.amazonaws.com:5432", "max_connections":5}' \
+    --wallet-storage-creds '{"account":"postgres","password":"iGiz3que","admin_account":"postgres","admin_password":"iGiz3que"}' \
     --plugin acapy_plugin_toolbox \
     --plugin acapy_plugin_data_transfer \
     --admin 0.0.0.0 "$ADMIN_PORT" \
