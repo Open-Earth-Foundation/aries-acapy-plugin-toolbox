@@ -11,6 +11,7 @@ phases:
     commands:
       - pip install --upgrade setuptools
       - pip install --upgrade pip
+      - pip install --upgrade wheel
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ACCOUNTID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
