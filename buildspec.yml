@@ -9,8 +9,8 @@ phases:
       - ls
   pre_build:
     commands:
-      - pip3 install --upgrade setuptools
-      - pip3 install --upgrade pip
+      - pip install --upgrade setuptools
+      - pip install --upgrade pip
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ACCOUNTID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
