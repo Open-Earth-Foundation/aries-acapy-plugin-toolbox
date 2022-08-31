@@ -14,23 +14,23 @@ if __name__ == '__main__':
         LONG_DESCRIPTION = fh.read()
 
     setup(
-        # name='aries-acapy-plugin-toolbox',
-        # version='0.1.0',
-        # author='Daniel Bluhm <daniel.bluhm@sovrin.org>, '
-        #        'Sam Curren <sam@sovrin.org>, '
-        #        'Adam Burdett <adam@sovrin.org, '
-        #        'Mike Lodder <mike@sovrin.org>',
-        # description='Aries Cloud Agent - Python Plugin for Aries Toolbox',
-        # long_description=LONG_DESCRIPTION,
-        # long_description_content_type='text/markdown',
-        # url='https://github.com/sovrin-foundation/aca-plugin-toolbox',
-        # license='Apache 2.0',
-        # packages=find_packages(),
-        # install_requires=parse_requirements('requirements.txt'),
-        # python_requires='>=3.6',
-        # classifiers=[
-        #     'Programming Language :: Python :: 3',
-        #     'License :: OSI Approved :: Apache Software License',
-        #     'Operating System :: OS Independent'
-        # ]
+        name='aries-acapy-plugin-toolbox',
+        version='0.1.0',
+        author='Daniel Bluhm <daniel.bluhm@sovrin.org>, '
+               'Sam Curren <sam@sovrin.org>, '
+               'Adam Burdett <adam@sovrin.org, '
+               'Mike Lodder <mike@sovrin.org>',
+        description='Aries Cloud Agent - Python Plugin for Aries Toolbox',
+        long_description=LONG_DESCRIPTION,
+        long_description_content_type='text/markdown',
+        url='https://github.com/sovrin-foundation/aca-plugin-toolbox',
+        license='Apache 2.0',
+        packages=find_packages(),
+        install_requires=parse_requirements('requirements.txt'),
+        python_requires='>=3.6',
+        classifiers=[
+            'Programming Language :: Python :: 3',
+            'License :: OSI Approved :: Apache Software License',
+            'Operating System :: OS Independent'
+        ]
     )
