@@ -28,7 +28,7 @@
   "environment": [
   {
     "name": "AGENT_NAME",
-    "value": "hub"
+    "value": "Open Climate"
   },
   {
     "name": "PORT",
