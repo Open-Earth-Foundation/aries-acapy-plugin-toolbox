@@ -43,3 +43,4 @@ artifacts:
     - 'taskdef.json'
     - 'buildspec.yml'
     - 'appspec.yml'
+    - 'startup.sh'
