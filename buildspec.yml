@@ -34,7 +34,10 @@ phases:
       - sed -i 's/<ACCOUNTID>/'$ACCOUNTID'/g' taskdef.json
       - sed -i 's/<ACAPY_ENDPOINT>/'$ACAPY_ENDPOINT'/g' taskdef.json
       - sed -i 's/<WEBHOOK_ADDRESS>/'$WEBHOOK_ADDRESS'/g' taskdef.json
-
+      - sed -i 's/<RDS_ACAPY_ARN>/'$RDS_ACAPY_ARN'/g' taskdef.json
+      - sed -i 's/<RDS_ACAPY_USER>/'$RDS_ACAPY_USER'/g' taskdef.json
+      - sed -i 's/<RDS_ACAPY_PASSWORD>/'$RDS_ACAPY_PASSWORD'/g' taskdef.json
+      - cat taskdef.json
 artifacts:
   files:
     - 'taskdef.json'
