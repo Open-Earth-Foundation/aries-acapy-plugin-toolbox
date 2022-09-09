@@ -45,6 +45,18 @@
   {
     "name": "ACAPY_ENDPOINT",
     "value": "https://<ACAPY_ENDPOINT>"
+  },
+  {
+    "name": "RDS_ACAPY_ARN",
+    "value": "<RDS_ACAPY_ARN>"
+  },
+  {
+    "name": "RDS_ACAPY_USER",
+    "value": "<RDS_ACAPY_USER>"
+  },
+  {
+    "name": "RDS_ACAPY_PASSWORD",
+    "value": "<RDS_ACAPY_PASSWORD>"
   }
 ]
 }
