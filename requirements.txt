@@ -1,0 +1,5 @@
+aries-cloudagent[indy]@git+https://github.com/Indicio-tech/aries-cloudagent-python@fix/backports
+aries-acapy-plugin-data-transfer@git+https://github.com/Indicio-tech/aries-acapy-plugin-data-transfer@04bdbe9a16b7c4b956c7ddde938ecb8c5e1ae82f
+marshmallow==3.0.0
+flake8
+python-dateutil

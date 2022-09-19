@@ -1,0 +1,64 @@
+{
+  "family": "acapy",
+  "containerDefinitions": [
+{
+  "name" : "acapy",
+  "image" : "<ACCOUNTID>.dkr.ecr.<REGION>.amazonaws.com/acapy:<VERSION>",
+  "cpu" : 0,
+  "memory" : 300,
+  "essential" : true,
+  "portMappings" : [
+    {
+      "containerPort" : 3005,
+      "hostPort" : 3005
+    },
+    {
+      "containerPort" : 8150,
+      "hostPort" : 8150
+    }
+  ],
+  "logConfiguration" : {
+    "logDriver" : "awslogs",
+    "options" : {
+      "awslogs-group" : "/ecs/acapy",
+      "awslogs-region" : "<REGION>",
+      "awslogs-stream-prefix" : "ecs"
+    }
+  },
+  "environment": [
+  {
+    "name": "AGENT_NAME",
+    "value": "Open Climate"
+  },
+  {
+    "name": "PORT",
+    "value": "3005"
+  },
+  {
+    "name": "ADMIN_PORT",
+    "value": "8150"
+  },
+  {
+    "name": "WEBHOOK_ADDRESS",
+    "value": "https://<WEBHOOK_ADDRESS>/api/controller-webhook"
+  },
+  {
+    "name": "ACAPY_ENDPOINT",
+    "value": "https://<ACAPY_ENDPOINT>"
+  },
+  {
+    "name": "RDS_ACAPY_ARN",
+    "value": "<RDS_ACAPY_ARN>"
+  },
+  {
+    "name": "RDS_ACAPY_USER",
+    "value": "<RDS_ACAPY_USER>"
+  },
+  {
+    "name": "RDS_ACAPY_PASSWORD",
+    "value": "<RDS_ACAPY_PASSWORD>"
+  }
+]
+}
+]
+}

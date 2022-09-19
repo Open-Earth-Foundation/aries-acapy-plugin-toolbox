@@ -1,54 +1,37 @@
 version: "3"
 services:
   tunnel-alice:
-    image: dbluhm/agent-tunnel
-    command: -s agent-alice:3000 -p 4040 -h ${AGENT_TUNNEL_HOST}
+    image: agent-tunnel
+    build: agent-tunnel
+    command: agent-alice:3000 -p 4040
   agent-alice:
-    image: acapy-toolbox
+    image: acapy-toolbox-tunnel
     build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
-    volumes:
-      - ./acapy-endpoint.sh:/acapy-endpoint.sh:ro,z
-      - ./configs:/home/indy/configs:ro,z
+      context: ../
+      dockerfile: ./demo/Dockerfile.demo
     environment:
-      TUNNEL_ENDPOINT: http://tunnel-alice:4040
+      TUNNEL_HOST: tunnel-alice
+      TUNNEL_PORT: 4040
       # Modify for more log output
       ACAPY_TOOLBOX_LOG_LEVEL: WARNING
     ports:
       - "3001:3001"
-    entrypoint: >
-      /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
-    command: start --arg-file ./configs/alice.yml
+    command: poetry run aca-py start --arg-file ./configs/alice.yml
 
   tunnel-bob:
-    image: dbluhm/agent-tunnel
-    command: -s agent-bob:3002 -p 4040 -h ${AGENT_TUNNEL_HOST}
+    image: agent-tunnel
+    build: agent-tunnel
+    command: agent-bob:3002 -p 4040
   agent-bob:
-    image: acapy-toolbox
+    image: acapy-toolbox-tunnel
     build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
-    volumes:
-      - ./acapy-endpoint.sh:/acapy-endpoint.sh:ro,z
-      - ./configs:/home/indy/configs:ro,z
+      context: ../
+      dockerfile: ./demo/Dockerfile.demo
     environment:
-      TUNNEL_ENDPOINT: http://tunnel-bob:4040
+      TUNNEL_HOST: tunnel-bob
+      TUNNEL_PORT: 4040
       # Modify for more log output
       ACAPY_TOOLBOX_LOG_LEVEL: WARNING
     ports:
       - "3003:3003"
-    entrypoint: >
-      /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
-    command: start --arg-file ./configs/bob.yml
-
-  tails-server:
-    image: dbluhm/indy-tails-server:latest
-    ports:
-      - 6543:6543
-    command: >
-      tails-server
-        --host 0.0.0.0
-        --port 6543
-        --storage-path ${STORAGE_PATH:-/tmp/tails-files}
-        --log-level ${LOG_LEVEL:-INFO}
+    command: poetry run aca-py start --arg-file ./configs/bob.yml

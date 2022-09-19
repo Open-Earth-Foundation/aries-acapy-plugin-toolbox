@@ -1,21 +1,17 @@
 version: "3"
 services:
   tunnel-mediator:
-    image: dbluhm/agent-tunnel
-    command: -s agent-mediator:3004 -p 4040 -h ${AGENT_TUNNEL_HOST}
-
+    image: agent-tunnel
+    build: agent-tunnel
+    command: agent-mediator:3004 -p 4040
   agent-mediator:
-    image: acapy-toolbox
+    image: acapy-toolbox-tunnel
     build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
-    volumes:
-      - ./acapy-endpoint.sh:/acapy-endpoint.sh:ro,z
-      - ./configs:/home/indy/configs:ro,z
+      context: ../
+      dockerfile: ./demo/Dockerfile.demo
     environment:
-      TUNNEL_ENDPOINT: http://tunnel-mediator:4040
+      TUNNEL_HOST: tunnel-mediator
+      TUNNEL_PORT: 4040
     ports:
       - "3005:3005"
-    entrypoint: >
-      /bin/sh -c '/acapy-endpoint.sh aca-py "$$@"' --
-    command: start --arg-file ./configs/mediator.yml
+    command: poetry run aca-py start --arg-file ./configs/mediator.yml
