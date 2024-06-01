@@ -13,6 +13,7 @@ Net for Verifiable Credentials exchange.
 Requirements:
 - Docker
 - Docker Compose
+- GCP credentials
 
 ### Disclaimer regarding the use of ngrok
 Both compose setups use the ngrok tunneling service to make your agent available
@@ -93,7 +94,7 @@ $ pip install -e .[indy]
 
 Install this plugin into the virtual environment:
 ```sh
-$ pip install git+https://github.com/hyperledger/aries-acapy-plugin-toolbox.git@master#egg=acapy-plugin-toolbox
+$ pip install git+https://github.com/hyperledger/aries-acapy-plugin-toolbox.git@main#egg=acapy-plugin-toolbox
 ```
 
 ### Plugin Loading
